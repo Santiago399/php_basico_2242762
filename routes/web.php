@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 
-Route::get ('variables', function() {
+Route::get('variables', function () {
 
     //definir una variable
     //en php
@@ -32,23 +32,68 @@ Route::get ('variables', function() {
     //muestra tipo de dato y valor
 
     print_r($mensaje);
-    echo"<hr />";
+    echo "<hr />";
     $mensaje = true;
     var_dump($mensaje);
-
-
-
-
 });
 
-Route::get('arreglos', function (){
+Route::get('arreglos', function () {
     //Arreglo: es uun estructura de datos
-    $estudiantes = [  'AN' =>  "Ana",
-                      'MA' =>  'Maria',
-                      'JO' =>  "Jorge" ]; //arreglo vacio [  ];
+    $estudiantes = [
+        'AN' =>  "Ana",
+        'MA' =>  'Maria',
+        'JO' =>  1
+    ]; //arreglo vacio [  ];
 
-    echo"<pre>";
+    echo "<pre>";
     var_dump($estudiantes);
     echo "</pre>";
+});
 
+Route::get("paises", function () { //la ruta paises
+
+//
+// Fuertemente Tipados: Debe definir el tipo de datos
+//                      No se puede cambiar el tipo de dato
+//                      JAVA , .NET , GO
+
+// Debilmente Tipados: No se requiere definir el tipo de dato
+//                     Puedes cambiar el tipo de dato
+//                     PHP , JAVASCRIPT , PYTHON
+    $paises = [
+        "Colombia" => [
+            "Capital" => "Bogotá",
+            "Moneda" => "Peso",
+            "Poblacion" => 50
+        ],
+
+        "Peru" => [
+            "Capital" => "Lima",
+            "Moneda" => "Sol",
+            "Poblacion" => 32.8
+
+        ],
+
+        "Paraguay" => [
+            "Capital" => "Asunción",
+            "Moneda" => "Guaraní",
+            "Poblacion" => 7.3
+
+        ]
+    ];
+
+    $suma = 0;
+    foreach ($paises as $nombre => $pais) {
+        /*echo "<pre>";
+        echo "<h1>$nombre</h1>";
+        print_r($pais["Capital"] . "<br />");
+        print_r($pais["Moneda"] . "<br />");
+        print_r($pais["Poblacion"] . "<br />");
+        echo "</pre>";
+        echo "<hr />";*/ //linea horizontal
+
+        $suma+= $pais["Poblacion"];
+    }
+
+    echo "la suma de los paises es $suma";
 });
