@@ -52,14 +52,14 @@ Route::get('arreglos', function () {
 
 Route::get("paises", function () { //la ruta paises
 
-//
-// Fuertemente Tipados: Debe definir el tipo de datos
-//                      No se puede cambiar el tipo de dato
-//                      JAVA , .NET , GO
+ //
+ // Fuertemente Tipados: Debe definir el tipo de datos
+   //                      No se puede cambiar el tipo de dato
+ //                      JAVA , .NET , GO
 
-// Debilmente Tipados: No se requiere definir el tipo de dato
-//                     Puedes cambiar el tipo de dato
-//                     PHP , JAVASCRIPT , PYTHON
+ // Debilmente Tipados: No se requiere definir el tipo de dato
+ //                     Puedes cambiar el tipo de dato
+ //                     PHP , JAVASCRIPT , PYTHON
     $paises = [
         "Colombia" => [
             "Capital" => "Bogotá",
@@ -82,8 +82,8 @@ Route::get("paises", function () { //la ruta paises
         ]
     ];
 
-    $suma = 0;
-    foreach ($paises as $nombre => $pais) {
+    //$suma = 0;
+    //foreach ($paises as $nombre => $pais) :
         /*echo "<pre>";
         echo "<h1>$nombre</h1>";
         print_r($pais["Capital"] . "<br />");
@@ -92,8 +92,24 @@ Route::get("paises", function () { //la ruta paises
         echo "</pre>";
         echo "<hr />";*/ //linea horizontal
 
-        $suma+= $pais["Poblacion"];
-    }
+        //$suma+= $pais["Poblacion"];
+   // endforeach;
 
-    echo "la suma de los paises es $suma";
+   // echo "la suma de los paises es $suma";
+
+    // cierre alternativa a los corchetes  :
+    //                             endforeach
+
+
+    //llamar a una vista
+    //con datos de paises
+    //alias : nombre con el cual
+    //      se reconoce los datos en la vista
+
+    return view('paises')->with("naciones", $paises);
 });
+
+
+Route::get('formulario_buscador', "MetabuscadorController@formulario_buscador");
+
+Route::post('buscar', "MetabuscadorController@buscar");
